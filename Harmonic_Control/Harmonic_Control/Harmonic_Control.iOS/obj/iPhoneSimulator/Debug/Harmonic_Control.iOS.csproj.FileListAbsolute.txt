@@ -1,0 +1,10 @@
+E:\Harmonic-Control\Harmonic_Control1\Harmonic_Control1\Harmonic_Control1.iOS\obj\iPhoneSimulator\Debug\ibtool\_BundleResourceWithLogicalName.items
+E:\Harmonic-Control\Harmonic_Control1\Harmonic_Control1\Harmonic_Control1.iOS\obj\iPhoneSimulator\Debug\actool\_PartialAppManifest.items
+E:\Harmonic-Control\Harmonic_Control1\Harmonic_Control1\Harmonic_Control1.iOS\obj\iPhoneSimulator\Debug\actool\_BundleResourceWithLogicalName.items
+E:\Harmonic-Control\Harmonic_Control1\Harmonic_Control1\Harmonic_Control1.iOS\obj\iPhoneSimulator\Debug\coremlc\_PartialAppManifest.items
+E:\Harmonic-Control\Harmonic_Control1\Harmonic_Control1\Harmonic_Control1.iOS\obj\iPhoneSimulator\Debug\coremlc\_BundleResourceWithLogicalName.items
+E:\Harmonic-Control\Harmonic_Control1\Harmonic_Control1\Harmonic_Control1.iOS\obj\iPhoneSimulator\Debug\optimized\
+E:\Harmonic-Control\Harmonic_Control1\Harmonic_Control1\Harmonic_Control1.iOS\obj\iPhoneSimulator\Debug\Harmonic_Control.iOS.csprojAssemblyReference.cache
+E:\Harmonic-Control\Harmonic_Control1\Harmonic_Control1\Harmonic_Control1.iOS\obj\iPhoneSimulator\Debug\Harmonic_Control.iOS.csproj.CoreCompileInputs.cache
+E:\Harmonic-Control\Harmonic_Control1\Harmonic_Control1\Harmonic_Control1.iOS\obj\iPhoneSimulator\Debug\Harmonic_Control1.iOS.exe
+E:\Harmonic-Control\Harmonic_Control1\Harmonic_Control1\Harmonic_Control1.iOS\obj\iPhoneSimulator\Debug\Harmonic_Control1.iOS.pdb

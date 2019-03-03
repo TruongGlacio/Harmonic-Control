@@ -1,0 +1,6 @@
+E:\Harmonic-Control\Harmonic_Control1\Harmonic_Control1\Harmonic_Control1.Android\obj\Debug\81\MonoAndroid,Version=v8.1.AssemblyAttributes.cs
+E:\Harmonic-Control\Harmonic_Control1\Harmonic_Control1\Harmonic_Control1.Android\obj\Debug\81\Harmonic_Control.Android.nuget.stamp
+E:\Harmonic-Control\Harmonic_Control1\Harmonic_Control1\Harmonic_Control1.Android\obj\Debug\81\Harmonic_Control.Android.csprojAssemblyReference.cache
+E:\Harmonic-Control\Harmonic_Control1\Harmonic_Control1\Harmonic_Control1.Android\obj\Debug\81\Harmonic_Control1.Android.dll
+E:\Harmonic-Control\Harmonic_Control1\Harmonic_Control1\Harmonic_Control1.Android\obj\Debug\81\Harmonic_Control1.Android.pdb
+E:\Harmonic-Control\Harmonic_Control\Harmonic_Control\Harmonic_Control\bin\Debug\netstandard2.0\Harmonic_Control.dll

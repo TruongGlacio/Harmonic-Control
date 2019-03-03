@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Harmonic_Control"
+             x:Class="Harmonic_Control.Views.HarmonicControlPage"
+             Title="VTI Harmonic Control"
+             x:Name="ContentPage"
+             >
+    <StackLayout
+        Orientation="Vertical"
+        >
+        <TemplatedView/>
+        <StackLayout
+            Orientation="Horizontal"
+            HeightRequest="60"
+            BackgroundColor="#E0F7FA"
+            Spacing="5"
+            >
+            <Button
+                x:Name="Button_Floor6"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Fill"          
+                BackgroundColor="#80DEEA"
+                Text="Floor 6"
+                FontSize="20"
+                Clicked="OnButton_Floor_Clicked"
+                />
+            
+            <Button
+                x:Name="Button_Floor8"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Fill"
+                BackgroundColor="#80DEEA"
+                Text="Floor 8"
+                FontSize="20"
+                />
+        </StackLayout>
+        <ListView
+            x:Name="ItemControlList"   
+            RowHeight="70"
+            >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout
+                            x:Name="LayoutItem"
+                            BackgroundColor="#E0F7FA"
+                            Orientation="Vertical"
+                            Spacing="5"
+                            HeightRequest="70"
+                            WidthRequest="300">
+                          
+                            <TemplatedView WidthRequest="5"/>
+                            <StackLayout
+                                    Orientation="Horizontal"
+                                    HeightRequest="60"
+                                    WidthRequest="300"
+                                    Spacing="10"                              
+                                    >
+                                <TemplatedView HeightRequest="5"/>
+                                <Button x:Name="Button_ON_OFF"
+                                        Text="{Binding ButtonText}"
+                                        BackgroundColor="{Binding ButtonColor}"
+                                        TextColor="{Binding ButtonTextColor}"
+                                        HeightRequest="60"
+                                        WidthRequest="60"
+                                        BorderRadius="30"
+                                        BorderWidth="3"
+                                        BorderColor="#CFD8DC"
+                                        FontSize="Small"
+                                        Clicked="OnButton_ON_OFF_Clicked"
+                                    />
+                                    <Label 
+                                        x:Name="ItemControlText"
+                                        Text="{Binding ItemControlName}"
+                                        BackgroundColor="#84FFFF"
+                                        HeightRequest="60"
+                                        WidthRequest="300"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalOptions="LayoutOptions.Fill"
+                                        TextColor="#D50000"
+                                        FontSize="25"
+                                   />
+                            </StackLayout>
+
+                            <TemplatedView WidthRequest="5"/>
+                            
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>
