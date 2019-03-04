@@ -96,7 +96,7 @@ namespace Harmonic_Control
         {
             if (itemName == ITEMCONTROL1)
             {
-                return socketClientManager.Connect(SOCKET_IP1, SOCKET_PORT1, command, itemName);
+                return socketClientManager.SenON_OFF_Command(SOCKET_IP1, SOCKET_PORT1, command, itemName);
             }
             else if (itemName == ITEMCONTROL2)
             {

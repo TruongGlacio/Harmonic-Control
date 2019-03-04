@@ -3,24 +3,34 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 
 namespace Harmonic_Control
 {
+    public delegate bool ConnectSocketResult(string hot, int port, int COMMAND, string itemNameControl);
+
     class SocketClientManager
     {
+        public static event ConnectSocketResult soketresult;
         private static object consoleLock = new object();
         private const int sendChunkSize = 256;
         private const int receiveChunkSize = 256;
         private const bool verbose = true;
         private static readonly TimeSpan delay = TimeSpan.FromMilliseconds(30000);
 
+        public bool SendON_OFF_Command(string host, int port, int COMMAND, string itemNameControl)
+        {
+            Thread thread = new Thread(new ThreadStart(() => Connect(host, port, COMMAND, itemNameControl)));
+            thread.Start();
 
-        public bool Connect(string host, int port, int COMMAND, string itemNameControl)
+        }
+        private bool Connect(string host, int port, int COMMAND, string itemNameControl)
         {
             NetworkInterface.GetAllNetworkInterfaces();
             IPAddress[] IPs = Dns.GetHostAddresses(host);
             try
             {
+
                  TcpClient tcpClient = new TcpClient(host, port);
                  Socket socket = tcpClient.Client;
                  SendData(socket, COMMAND, itemNameControl);
