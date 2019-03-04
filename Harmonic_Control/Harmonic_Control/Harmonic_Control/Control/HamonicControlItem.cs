@@ -96,69 +96,69 @@ namespace Harmonic_Control
         {
             if (itemName == ITEMCONTROL1)
             {
-                return socketClientManager.SenON_OFF_Command(SOCKET_IP1, SOCKET_PORT1, command, itemName);
+                return socketClientManager.SendON_OFF_Command(SOCKET_IP1, SOCKET_PORT1, command, itemName);
             }
             else if (itemName == ITEMCONTROL2)
             {
-                return socketClientManager.Connect(SOCKET_IP1, SOCKET_PORT2, command, itemName);
+                return socketClientManager.SendON_OFF_Command(SOCKET_IP1, SOCKET_PORT2, command, itemName);
             }
             else if (itemName == ITEMCONTROL3)
             {
-                return socketClientManager.Connect(SOCKET_IP1, SOCKET_PORT3, command, itemName);
+                return socketClientManager.SendON_OFF_Command(SOCKET_IP1, SOCKET_PORT3, command, itemName);
 
             }
             else if (itemName == ITEMCONTROL4)
             {
-                return socketClientManager.Connect(SOCKET_IP1, SOCKET_PORT4, command, itemName);
+                return socketClientManager.SendON_OFF_Command(SOCKET_IP1, SOCKET_PORT4, command, itemName);
             }
             else if (itemName == ITEMCONTROL5)
             {
-                return socketClientManager.Connect(SOCKET_IP1, SOCKET_PORT5, command, itemName);
+                return socketClientManager.SendON_OFF_Command(SOCKET_IP1, SOCKET_PORT5, command, itemName);
             }
             else if (itemName == ITEMCONTROL6)
             {
-                return socketClientManager.Connect(SOCKET_IP1, SOCKET_PORT6, command, itemName);
+                return socketClientManager.SendON_OFF_Command(SOCKET_IP1, SOCKET_PORT6, command, itemName);
 
             }
             else if (itemName == ITEMCONTROL7)
             {
-                return socketClientManager.Connect(SOCKET_IP1, SOCKET_PORT7, command, itemName);
+                return socketClientManager.SendON_OFF_Command(SOCKET_IP1, SOCKET_PORT7, command, itemName);
             }
             else if (itemName == ITEMCONTROL8)
             {
-                return socketClientManager.Connect(SOCKET_IP1, SOCKET_PORT8, command, itemName);
+                return socketClientManager.SendON_OFF_Command(SOCKET_IP1, SOCKET_PORT8, command, itemName);
             }
             else if (itemName == ITEMCONTROL9)
             {
-                return socketClientManager.Connect(SOCKET_IP1, SOCKET_PORT9, command, itemName);
+                return socketClientManager.SendON_OFF_Command(SOCKET_IP1, SOCKET_PORT9, command, itemName);
             }
             else if (itemName == ITEMCONTROL10)
             {
-                return socketClientManager.Connect(SOCKET_IP1, SOCKET_PORT10, command, itemName);
+                return socketClientManager.SendON_OFF_Command(SOCKET_IP1, SOCKET_PORT10, command, itemName);
             }
             else if (itemName == ITEMCONTROL11)
             {
-                return socketClientManager.Connect(SOCKET_IP1, SOCKET_PORT11, command, itemName);
+                return socketClientManager.SendON_OFF_Command(SOCKET_IP1, SOCKET_PORT11, command, itemName);
             }
             else if (itemName == ITEMCONTROL12)
             {
-                return socketClientManager.Connect(SOCKET_IP1, SOCKET_PORT12, command, itemName);
+                return socketClientManager.SendON_OFF_Command(SOCKET_IP1, SOCKET_PORT12, command, itemName);
             }
             else if (itemName == ITEMCONTROL13)
             {
-                return socketClientManager.Connect(SOCKET_IP1, SOCKET_PORT13, command, itemName);
+                return socketClientManager.SendON_OFF_Command(SOCKET_IP1, SOCKET_PORT13, command, itemName);
             }
             else if (itemName == ITEMCONTROL14)
             {
-                return socketClientManager.Connect(SOCKET_IP1, SOCKET_PORT14, command, itemName);
+                return socketClientManager.SendON_OFF_Command(SOCKET_IP1, SOCKET_PORT14, command, itemName);
             }
             else if (itemName == ITEMCONTROL15)
             {
-                return socketClientManager.Connect(SOCKET_IP1, SOCKET_PORT15, command, itemName);
+                return socketClientManager.SendON_OFF_Command(SOCKET_IP1, SOCKET_PORT15, command, itemName);
             }
             else if (itemName == ITEMCONTROL16)
             {
-                return socketClientManager.Connect(SOCKET_IP1, SOCKET_PORT16, command, itemName);
+                return socketClientManager.SendON_OFF_Command(SOCKET_IP1, SOCKET_PORT16, command, itemName);
             }
             else
                 return false;
