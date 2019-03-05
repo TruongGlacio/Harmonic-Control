@@ -4,6 +4,7 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Harmonic_Control
 {
@@ -11,7 +12,7 @@ namespace Harmonic_Control
 
     class SocketClientManager
     {
-        public static event ConnectSocketResult soketresult;
+        //public static event ConnectSocketResult soketresult;
         private static object consoleLock = new object();
         private const int sendChunkSize = 256;
         private const int receiveChunkSize = 256;
@@ -20,9 +21,15 @@ namespace Harmonic_Control
 
         public bool SendON_OFF_Command(string host, int port, int COMMAND, string itemNameControl)
         {
-            Thread thread = new Thread(new ThreadStart(() => Connect(host, port, COMMAND, itemNameControl)));
-            thread.Start();
-
+            bool result = false;
+            ConnectSocketResult connectSocketResult = this.Connect;
+            //Thread thread = new Thread(()=>
+            //{ result = Connect(host, port, COMMAND, itemNameControl); });
+            //thread.Start();
+            //return result;
+            IAsyncResult asyncResult = connectSocketResult.BeginInvoke(host, port, COMMAND, itemNameControl, null, null);
+            var resultVar = connectSocketResult.EndInvoke(asyncResult);
+            return (bool)resultVar;
         }
         private bool Connect(string host, int port, int COMMAND, string itemNameControl)
         {

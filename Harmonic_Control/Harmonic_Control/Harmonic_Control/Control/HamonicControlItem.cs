@@ -47,7 +47,7 @@ namespace Harmonic_Control
         #region define socket info
         //Define Socket address
 
-        public string SOCKET_IP1 = "192.168.137.199";
+        public string SOCKET_IP1 = "192.168.1.103";
         public int SOCKET_PORT1 = 8880;
         public string SOCKET_IP2 = "192.168.137.199";
         public int SOCKET_PORT2 = 8880;

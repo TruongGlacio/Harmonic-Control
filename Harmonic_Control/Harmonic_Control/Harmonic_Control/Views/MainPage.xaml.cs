@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Harmonic_Control;
 namespace Harmonic_Control.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
