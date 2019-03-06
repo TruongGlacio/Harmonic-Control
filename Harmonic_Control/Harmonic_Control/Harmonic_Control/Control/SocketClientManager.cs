@@ -9,16 +9,11 @@ using System.Threading.Tasks;
 namespace Harmonic_Control
 {
     public delegate bool ConnectSocketResult(string hot, int port, int COMMAND, string itemNameControl);
+    public delegate int CheckStatusResult(string hot, int port, int COMMAND, string itemNameControl);
+
 
     class SocketClientManager
     {
-        //public static event ConnectSocketResult soketresult;
-        private static object consoleLock = new object();
-        private const int sendChunkSize = 256;
-        private const int receiveChunkSize = 256;
-        private const bool verbose = true;
-        private static readonly TimeSpan delay = TimeSpan.FromMilliseconds(30000);
-
         public bool SendON_OFF_Command(string host, int port, int COMMAND, string itemNameControl)
         {
             bool result = false;
@@ -31,44 +26,72 @@ namespace Harmonic_Control
             var resultVar = connectSocketResult.EndInvoke(asyncResult);
             return (bool)resultVar;
         }
+        public int CheckHamonic_Status(string host, int port, int COMMAND, string itemNameControl) {
+
+            CheckStatusResult checkStatusResult = this.HamonicCheckStatus;
+            IAsyncResult asyncResult = checkStatusResult.BeginInvoke(host, port, COMMAND, itemNameControl, null, null);
+            var resultVar = checkStatusResult.EndInvoke(asyncResult);
+            return (int)resultVar;
+        }
+
         private bool Connect(string host, int port, int COMMAND, string itemNameControl)
         {
             NetworkInterface.GetAllNetworkInterfaces();
             IPAddress[] IPs = Dns.GetHostAddresses(host);
+           
+                try
+                {
+
+                    TcpClient tcpClient = new TcpClient(host, port);
+                    Socket socket = tcpClient.Client;
+                    SendData(socket, COMMAND, itemNameControl);
+                    Thread.Sleep(500);
+                    socket.Disconnect(true);
+                    DisConnect(tcpClient);
+                    return true;
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error connect to socket server:" + e.Message);
+                    return false;
+                }   
+
+        }
+        private int HamonicCheckStatus(string host, int port, int COMMAND, string itemNameControl)
+        {
             try
             {
+                TcpClient tcpClient = new TcpClient(host, port);
+                Socket socket = tcpClient.Client;
+                SendData(socket, COMMAND, itemNameControl);
 
-                 TcpClient tcpClient = new TcpClient(host, port);
-                 Socket socket = tcpClient.Client;
-                 SendData(socket, COMMAND, itemNameControl);
-                 socket.Disconnect(true);
-                 DisConnect(tcpClient);
-                 return true;
-             
+                NetworkStream nwStream = tcpClient.GetStream();
+                byte[] bytesToRead = new byte[tcpClient.ReceiveBufferSize];
+                int bytesRead = nwStream.Read(bytesToRead, 0, tcpClient.ReceiveBufferSize);
+                String dataString = Encoding.ASCII.GetString(bytesToRead, 0, bytesRead);
+
+                Console.WriteLine("Received : " + Encoding.ASCII.GetString(bytesToRead, 0, bytesRead));
+
+                Thread.Sleep(500);
+                socket.Disconnect(true);
+                DisConnect(tcpClient);
+                tcpClient.Close();
+                int status = GetStatusFromDataRecive(dataString, itemNameControl);
+                if (status == HamonicControlItem.HARMONIC_OFF)
+                    return HamonicControlItem.HARMONIC_OFF;
+                else if (status == HamonicControlItem.HARMONIC_ON)
+                    return HamonicControlItem.HARMONIC_ON;
+                else
+                    return HamonicControlItem.HARMONIC_NOT_CONNNECT;
             }
             catch (Exception e)
             {
-                   Console.WriteLine("Error connect to socket server:"+e.Message);
-                return false;
+                Console.WriteLine("Error connect to socket server:" + e.Message);
+                return HamonicControlItem.HARMONIC_NOT_CONNNECT;
             }
-            //Socket s = new Socket(AddressFamily.InterNetwork,
-            //    SocketType.Stream,
-            //    ProtocolType.Tcp);
-
-            //Console.WriteLine("Establishing Connection to {0}",host);
-            //try
-            //{
-            //    s.Connect(IPs[0], port);
-            //    SendData(s);
-            //    Console.WriteLine("Connection established");
-
-            //}
-            //catch (Exception e)
-            //{
-            //    Console.WriteLine("Error connect to socket server:"+e.Message);
-            //}
         }
-        public void DisConnect(TcpClient tcpClient) {
+        private void DisConnect(TcpClient tcpClient) {
             if (tcpClient.Connected)
             {
                 tcpClient.Close();
@@ -76,12 +99,23 @@ namespace Harmonic_Control
 
             }
         }
-        public void SendData(Socket s, int COMMAND, string itemNameControl )
+        private void SendData(Socket s, int COMMAND, string itemNameControl )
         {   
             String dataString = itemNameControl+":"+COMMAND;
 
             byte[] bytes = Encoding.ASCII.GetBytes(dataString);
             s.Send(bytes);
+        }
+       
+        private int GetStatusFromDataRecive(string DataString,string itemNameControl)
+        {
+
+            bool checkCorrectitem = DataString.Contains(itemNameControl);
+            if (!checkCorrectitem)
+                return HamonicControlItem.HARMONIC_NOT_CONNNECT;
+            String hamonicStatus = DataString.Split(',')[1];
+            Int32.TryParse(hamonicStatus, out int status);
+            return status;
         }
     }
 }

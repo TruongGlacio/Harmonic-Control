@@ -20,8 +20,16 @@ namespace Harmonic_Control
         public const string Button_Color_Off = "#FF3D00";
         public const string Button_Color_Disconnect = "#BDBDBD";
         public const string ItemControlHeadName = " Harmonic control ";
-        public const int ON_COMMAND = 1;
+
+
         public const int OFF_COMMAND = 0;
+        public const int ON_COMMAND = 1;
+        public const int CHECKSTATUS_COMMAND = 2;
+
+        public const int HARMONIC_OFF = 0;
+        public const int HARMONIC_ON = 1;
+        public const int HARMONIC_NOT_CONNNECT = 2;
+
         #endregion
 
         #region define item control name
