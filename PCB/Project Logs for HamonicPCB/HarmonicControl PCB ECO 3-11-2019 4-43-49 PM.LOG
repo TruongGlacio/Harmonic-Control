@@ -1,0 +1,9 @@
+Added Component: Designator=I1(ESP8266_Node_MCU_V3)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=NetI1_1 Pin=I1-1
+Added Pin To Net: NetName=NetI1_3 Pin=I1-3
+Added Pin To Net: NetName=NetD2_2 Pin=I1-14
+Added Pin To Net: NetName=NetI1_16 Pin=I1-16
+Added Pin To Net: NetName=GND Pin=I1-17
+Added Pin To Net: NetName=NetI1_20 Pin=I1-20
+Added Member To Class: ClassName=HarmonicControl Member=Component I1 ESP8266

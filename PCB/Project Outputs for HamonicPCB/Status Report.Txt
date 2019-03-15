@@ -1,0 +1,13 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [HamonicPCB.PrjPCB]
+   Generated File[HarmonicControl_2-RoundHoles.TXT]
+   Generated File[HarmonicControl_2-SquareHoles.TXT]
+   Generated File[HarmonicControl_2.LDP]
+   Generated File[HarmonicControl_2.DRR]
+
+
+Files Generated   : 4
+Documents Printed : 0
+
+Finished Output Generation At 1:05:00 PM On 3/13/2019

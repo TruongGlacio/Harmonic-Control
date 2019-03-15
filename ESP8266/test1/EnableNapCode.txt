@@ -1,0 +1,6 @@
+RX->TX
+TX->RX
+VCC->3.3v
+Ground->gnd
+GPIO0-> noi tiep noi R=10k xuong GND
+CH_EN-3.3v

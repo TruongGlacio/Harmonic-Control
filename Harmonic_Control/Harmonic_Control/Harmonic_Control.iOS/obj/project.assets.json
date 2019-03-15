@@ -714,20 +714,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Buixu\\.nuget\\packages\\": {}
+    "C:\\Users\\truong.buixuan.VTI\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Harmonic-Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control.iOS\\Harmonic_Control.iOS.csproj",
+      "projectUniqueName": "E:\\Hamonic\\HarmonicGithub\\Harmonic-Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control.iOS\\Harmonic_Control.iOS.csproj",
       "projectName": "Harmonic_Control.iOS",
-      "projectPath": "E:\\Harmonic-Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control.iOS\\Harmonic_Control.iOS.csproj",
-      "packagesPath": "C:\\Users\\Buixu\\.nuget\\packages\\",
-      "outputPath": "E:\\Harmonic-Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control.iOS\\obj\\",
+      "projectPath": "E:\\Hamonic\\HarmonicGithub\\Harmonic-Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control.iOS\\Harmonic_Control.iOS.csproj",
+      "packagesPath": "C:\\Users\\truong.buixuan.VTI\\.nuget\\packages\\",
+      "outputPath": "E:\\Hamonic\\HarmonicGithub\\Harmonic-Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\Buixu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\truong.buixuan.VTI\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -740,8 +740,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "E:\\Harmonic-Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control.csproj": {
-              "projectPath": "E:\\Harmonic-Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control.csproj"
+            "E:\\Hamonic\\HarmonicGithub\\Harmonic-Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control.csproj": {
+              "projectPath": "E:\\Hamonic\\HarmonicGithub\\Harmonic-Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control.csproj"
             }
           }
         }

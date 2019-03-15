@@ -343,23 +343,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Buixu\\.nuget\\packages\\": {},
+    "C:\\Users\\truong.buixuan.VTI\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Harmonic-Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control.csproj",
+      "projectUniqueName": "E:\\Hamonic\\HarmonicGithub\\Harmonic-Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control.csproj",
       "projectName": "Harmonic_Control",
-      "projectPath": "E:\\Harmonic-Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control.csproj",
-      "packagesPath": "C:\\Users\\Buixu\\.nuget\\packages\\",
-      "outputPath": "E:\\Harmonic-Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control\\obj\\",
+      "projectPath": "E:\\Hamonic\\HarmonicGithub\\Harmonic-Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control.csproj",
+      "packagesPath": "C:\\Users\\truong.buixuan.VTI\\.nuget\\packages\\",
+      "outputPath": "E:\\Hamonic\\HarmonicGithub\\Harmonic-Control\\Harmonic_Control\\Harmonic_Control\\Harmonic_Control\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Buixu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\truong.buixuan.VTI\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
