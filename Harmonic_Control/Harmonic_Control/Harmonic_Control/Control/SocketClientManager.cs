@@ -18,16 +18,12 @@ namespace Harmonic_Control
         {
             bool result = false;
             ConnectSocketResult connectSocketResult = this.Connect;
-            //Thread thread = new Thread(()=>
-            //{ result = Connect(host, port, COMMAND, itemNameControl); });
-            //thread.Start();
-            //return result;
             IAsyncResult asyncResult = connectSocketResult.BeginInvoke(host, port, COMMAND, itemNameControl, null, null);
             var resultVar = connectSocketResult.EndInvoke(asyncResult);
             return (bool)resultVar;
         }
         public int CheckHamonic_Status(string host, int port, int COMMAND, string itemNameControl) {
-
+            
             CheckStatusResult checkStatusResult = this.HamonicCheckStatus;
             IAsyncResult asyncResult = checkStatusResult.BeginInvoke(host, port, COMMAND, itemNameControl, null, null);
             var resultVar = checkStatusResult.EndInvoke(asyncResult);

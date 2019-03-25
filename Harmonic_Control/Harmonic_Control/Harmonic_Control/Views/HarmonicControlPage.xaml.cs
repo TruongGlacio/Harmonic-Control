@@ -73,9 +73,31 @@ namespace Harmonic_Control.Views
 
             }          
         }
-        public static void OnButton_CheckConnectAll()
+        public void OnButton_CheckConnectAll()
         {
             //ImageButton button = (ImageButton)sender;
+            for (int i=0;i<= listControl.Count; i ++)
+            {
+                String itemName = listControl[i].ItemControlName;
+                int resultCheckStatus = controlItem.HamonicItemCheckStatus(itemName, HamonicControlItem.CHECKSTATUS_COMMAND);
+                switch (resultCheckStatus) {
+                    case HamonicControlItem.HARMONIC_NOT_CONNNECT:
+                        listControl[i] = new HamonicControlItem {ButtonColor = HamonicControlItem.Button_Color_Disconnect, ButtonText = HamonicControlItem.Button_No_Connect, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON };
+                        break;
+                    case HamonicControlItem.HARMONIC_OFF:
+                        listControl[i] = new HamonicControlItem { ButtonColor = HamonicControlItem.Button_Color_Off, ButtonText = HamonicControlItem.Button_Off, ButtonTextColor = HamonicControlItem.Button_Text_Color_OFF };
+                        break;
+                    case HamonicControlItem.HARMONIC_ON:
+                        listControl[i] = new HamonicControlItem { ButtonColor = HamonicControlItem.Button_Color_On, ButtonText = HamonicControlItem.Button_On, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON };
+                        break;
+                    default:
+                        listControl[i] = new HamonicControlItem { ButtonColor = HamonicControlItem.Button_Color_Disconnect, ButtonText = HamonicControlItem.Button_No_Connect, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON };
+                        break;
+
+                }       
+            }
+
+            return;
 
         }
 

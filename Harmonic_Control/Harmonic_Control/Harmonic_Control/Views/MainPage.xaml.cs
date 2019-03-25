@@ -25,15 +25,18 @@ namespace Harmonic_Control.Views
 
         public async Task NavigateFromMenu(int id)
         {
+            HarmonicControlPage harmonicControlPage = new HarmonicControlPage();
             if (!MenuPages.ContainsKey(id))
             {
                 switch (id)
                 {
                     case (int)MenuItemType.MainPage:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
+                        MenuPages.Add(id, new NavigationPage(harmonicControlPage));
                         break;
                     case (int)MenuItemType.Checkconnect:
-                        HarmonicControlPage.OnButton_CheckConnectAll();
+                        MenuPages.Add(id, new NavigationPage(harmonicControlPage));                   
+                        harmonicControlPage.OnButton_CheckConnectAll();
+                        //MenuPages.Add(id, new NavigationPage(new HarmonicControlPage()));
                         break;
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
