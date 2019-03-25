@@ -25,7 +25,7 @@ extern "C" int clock_gettime(clockid_t unused, struct timespec *tp);
 //......................//
 #define PTM(w) \
 
-#define TimeStop20h 15*3600+27*60
+#define TimeStop20h 14*3600+40*60
 #define TimeStop22h 22*3600
 #define TimeStop23h 23*3600
 
@@ -34,9 +34,9 @@ extern "C" int clock_gettime(clockid_t unused, struct timespec *tp);
 
 // Replace with your network credentials
 const char* ssid     = "ThePC";
-const char* password = "khongcopass";
-const int pinOut=2;
-const int pinIN=0;
+const char* password = "khongcopass";//"yzwCv5hJ";
+const int pinOut=5;// D1
+const int pinIN=4; //D2
 String dataString;
 bool _userON;
 char statusCommand=0x00;
@@ -68,8 +68,8 @@ void GetCurrentTime()
   current_min=localtime(&now)->tm_hour*3600+localtime(&now)->tm_min*60+ localtime(&now)->tm_sec;
   Serial.print("curent time value="); //This is where we actually print the time string.
   Serial.println(current_min); //This is where we actually print the time string.
-  delay(1000);
   ControlHarnomicFllowTime(current_min);
+  delay(500);
 }
 
 void SetUpServer()
@@ -114,7 +114,7 @@ void ControlHarnomicFllowTime(uint32_t sec)
 {
  
    int value = digitalRead(pinIN);   // read the input pin
-     if((( sec>TimeStop20h && sec< TimeStop20h+2)||(sec>TimeStop22h && sec< TimeStop22h+2)||(sec>TimeStop23h && sec< TimeStop23h+2)) )&& value==HIGH)// control on hamonic
+     if(((( sec>TimeStop20h && sec< TimeStop20h+2)||(sec>TimeStop22h && sec< TimeStop22h+2)||(sec>TimeStop23h && sec< TimeStop23h+2)) )&& value==HIGH)// control on hamonic
      {
         Serial.println("Harmonic OFF"); 
         digitalWrite(pinOut, HIGH); 
@@ -122,13 +122,6 @@ void ControlHarnomicFllowTime(uint32_t sec)
         digitalWrite(pinOut, LOW); 
         
      } 
-//    else if(value==HIGH)// control off hamoic 
-//     {
-//        Serial.println("Harmonic off"); 
-//        digitalWrite(pinOut, HIGH); 
-//        delay(500);
-//        digitalWrite(pinOut, LOW); 
-//     }
 }
 void ControlHarnomicFllowMessage(char status, WiFiClient client)
 {
