@@ -7,7 +7,7 @@ namespace Harmonic_Control.Models
     public enum MenuItemType
     {
         MainPage,
-        Checkconnect,
+        SetTime,
         About,
         Exit
     }

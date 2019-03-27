@@ -75,12 +75,24 @@
                                         Text="{Binding ItemControlName}"
                                         BackgroundColor="#84FFFF"
                                         HeightRequest="60"
-                                        WidthRequest="300"
+                                        WidthRequest="310"
                                         VerticalTextAlignment="Center"
                                         HorizontalOptions="LayoutOptions.Fill"
                                         TextColor="#D50000"
-                                        FontSize="25"
+                                        FontSize="22"
+                                        
                                    />
+                                <Button x:Name="Button_Time"
+                                        Text="{Binding ButtonSetTimeText}"
+                                        BackgroundColor="{Binding ButtonColor}"
+                                        TextColor="{Binding ButtonTextColor}"
+                                        HeightRequest="60"
+                                        WidthRequest="60"
+                                        BorderRadius="30"
+                                        BorderWidth="3"
+                                        BorderColor="#CFD8DC"
+                                        FontSize="Small"
+                                        Clicked="SetHamonicTime"/>
                             </StackLayout>
 
                             <TemplatedView WidthRequest="5"/>

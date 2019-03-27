@@ -19,7 +19,7 @@ namespace Harmonic_Control.Views
             menuItems = new List<HomeMenuItem>
             {
                 new HomeMenuItem {Id = MenuItemType.MainPage, Title="MainPage" },
-                new HomeMenuItem {Id = MenuItemType.Checkconnect, Title="Check connect All" },
+               // new HomeMenuItem {Id = MenuItemType.Checkconnect, Title="Check connect All" },
                 new HomeMenuItem {Id = MenuItemType.About, Title="About" },
                 new HomeMenuItem {Id = MenuItemType.Exit, Title="Exit" }
             };

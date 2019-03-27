@@ -33,8 +33,8 @@ namespace Harmonic_Control.Views
                     case (int)MenuItemType.MainPage:
                         MenuPages.Add(id, new NavigationPage(harmonicControlPage));
                         break;
-                    case (int)MenuItemType.Checkconnect:
-                        MenuPages.Add(id, new NavigationPage(harmonicControlPage));                   
+                    case (int)MenuItemType.SetTime:
+                        MenuPages.Add(id, new NavigationPage(harmonicControlPage));
                         harmonicControlPage.OnButton_CheckConnectAll();
                         //MenuPages.Add(id, new NavigationPage(new HarmonicControlPage()));
                         break;

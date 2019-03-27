@@ -12,8 +12,6 @@ namespace Harmonic_Control
         public App()
         {
             InitializeComponent();
-
-
             MainPage = new MainPage();
         }
 

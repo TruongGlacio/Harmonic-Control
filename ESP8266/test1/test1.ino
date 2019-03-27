@@ -40,6 +40,7 @@ const int pinIN=4; //D2
 String dataString;
 bool _userON;
 char statusCommand=0x00;
+uint32_t timeSetFromClient=0;
 // Set web server port number to 80
 WiFiServer server(8880);
 
@@ -69,6 +70,8 @@ void GetCurrentTime()
   Serial.print("curent time value="); //This is where we actually print the time string.
   Serial.println(current_min); //This is where we actually print the time string.
   ControlHarnomicFllowTime(current_min);
+  Serial.print ("timeSetFromClient=");
+  Serial.println(timeSetFromClient);
   delay(500);
 }
 
@@ -114,7 +117,7 @@ void ControlHarnomicFllowTime(uint32_t sec)
 {
  
    int value = digitalRead(pinIN);   // read the input pin
-     if(((( sec>TimeStop20h && sec< TimeStop20h+2)||(sec>TimeStop22h && sec< TimeStop22h+2)||(sec>TimeStop23h && sec< TimeStop23h+2)) )&& value==HIGH)// control on hamonic
+     if(((( sec>TimeStop20h && sec< TimeStop20h+2)||(sec>TimeStop22h && sec< TimeStop22h+2)||(sec>TimeStop23h && sec< TimeStop23h+2))||(sec>timeSetFromClient && sec< timeSetFromClient+2) )&& value==HIGH)// control on hamonic
      {
         Serial.println("Harmonic OFF"); 
         digitalWrite(pinOut, HIGH); 
@@ -123,7 +126,7 @@ void ControlHarnomicFllowTime(uint32_t sec)
         
      } 
 }
-void ControlHarnomicFllowMessage(char status, WiFiClient client)
+void ControlHarnomicFllowMessage(String datastring, char status, WiFiClient client)
 {
      int value = digitalRead(pinIN);   // read the input pin
      if(status=='1'&& value==LOW)// control on hamonic
@@ -133,6 +136,15 @@ void ControlHarnomicFllowMessage(char status, WiFiClient client)
         delay(500);
         digitalWrite(pinOut, LOW); 
         
+        int value = digitalRead(pinIN);   // read the input pin
+        String valueString=(String)value;
+        Serial.print("valude string = "); 
+        Serial.println(valueString); 
+        datastring+=String(value);
+        client.println(datastring) ;   
+        Serial.print("Send hamonic status: ");      
+        Serial.println(datastring);
+        
      } 
     else if(status=='0'&& value==HIGH)// control off hamoic 
      {
@@ -140,32 +152,85 @@ void ControlHarnomicFllowMessage(char status, WiFiClient client)
         digitalWrite(pinOut, HIGH); 
         delay(500);
         digitalWrite(pinOut, LOW); 
-     }
+        int value = digitalRead(pinIN);   // read the input pin
+        String valueString=(String)value;
+        Serial.print("valude string = "); 
+        Serial.println(valueString); 
+        datastring+=String(value);
+        client.println(datastring) ;   
+        Serial.print("Send hamonic status: ");      
+        Serial.println(datastring);
+     } 
      else if(status=='2')// check status on-off and send to client
      {
-      dataString+=String(value);
-      client.println(dataString) ;   
+      int value = digitalRead(pinIN);   // read the input pin
+      String valueString=(String)value;
+      Serial.print("valude string = "); 
+      Serial.println(valueString); 
+      datastring+=String(value);
+      client.println(datastring) ;   
       Serial.print("Send hamonic status: ");      
-      Serial.println(dataString);   
+      Serial.println(datastring);   
       }
 }
 void ReadData(WiFiClient client){
          char c = client.read();             // read a byte, then
-         Serial.write(c); 
-        
+         Serial.write(c);       
+         dataString+=(String)c; 
         if(c==0x3A) {
-          dataString+=c;
           statusCommand = client.read();             // read a byte, then
           Serial.print("Data command = "); 
           Serial.write(statusCommand); 
           Serial.println('\n'); 
-          ControlHarnomicFllowMessage(statusCommand,client);
+          ControlHarnomicFllowMessage(dataString, statusCommand,client);
           client.stopAllExcept(&client);
           Serial.println("Client disconnected.");
           }
-          else {       
-            dataString+=c;
-            }
+        if(c==0x2C)
+        {
+          Serial.println(" Recives set time commmand.");
+          timeSetFromClient=SetTimeFromClient(dataString,client);
+          Serial.println(timeSetFromClient);
+        }
+  }
+int SetTimeFromClient(String dataString,WiFiClient client){
+      String timeString="";
+      float  myNumber =0; 
+      timeString += (char)(client.read());             // read a byte, then
+             Serial.println(timeString);  
+      timeString += (char)( client.read());             // read a byte, then
+            Serial.println(timeString);  
+            (char)(client.read());             // read a byte, then
+      timeString += '.';
+            Serial.println(timeString);  
+      timeString += (char)(client.read());             // read a byte, then
+            Serial.println(timeString);  
+      timeString += (char)(client.read());             // read a byte, then
+            Serial.println(timeString);  
+      myNumber=timeString.toFloat(); 
+      Serial.print("My number=: ");  
+      Serial.println(myNumber);
+      uint32_t secTime=(uint32_t)(myNumber*3600); 
+      Serial.print(" Setime recives sec=: ");  
+      Serial.println(secTime);  
+      timeString="";
+      if(secTime>0 && secTime<24*3600)
+      {
+          dataString+="1";
+          client.println(dataString) ;   
+          Serial.print("Send hamonic SetTime Status: ");      
+          Serial.println(dataString); 
+          
+          return secTime;
+      }
+      else
+      {
+          dataString+="0";
+          client.println(dataString) ;   
+          Serial.print("Send hamonic SetTime Status: ");      
+          Serial.println(dataString); 
+          return timeSetFromClient;
+     }
   }
 void loop(){
   GetCurrentTime();
@@ -173,12 +238,15 @@ void loop(){
   if (client) {                             // If a new client connects,
     Serial.println("New Client.");          // print a message out in the serial port
     String currentLine = "";                // make a String to hold incoming data from the client
-    while (client.connected()) {            // loop while the client's connected
-      if (client.available()) {             // if there's bytes to read from the client,
+    while (client.connected()) 
+    {            // loop while the client's connected
+      if (client.available()) 
+      {             // if there's bytes to read from the client,
         Serial.println(" Client avaiable");          // print a message out in the serial port
         ReadData(client);
-        dataString="";
       }
-      }
+    }
+       Serial.println(dataString);
+       dataString="";
   }
 }

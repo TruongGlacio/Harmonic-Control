@@ -4,3 +4,4 @@ E:\Harmonic-Control\Harmonic_Control1\Harmonic_Control1\Harmonic_Control1.Androi
 E:\Harmonic-Control\Harmonic_Control1\Harmonic_Control1\Harmonic_Control1.Android\obj\Debug\81\Harmonic_Control1.Android.dll
 E:\Harmonic-Control\Harmonic_Control1\Harmonic_Control1\Harmonic_Control1.Android\obj\Debug\81\Harmonic_Control1.Android.pdb
 E:\Harmonic-Control\Harmonic_Control\Harmonic_Control\Harmonic_Control\bin\Debug\netstandard2.0\Harmonic_Control.dll
+E:\Hamonic\HarmonicGithub\Harmonic-Control\Harmonic_Control\Harmonic_Control\Harmonic_Control\bin\Debug\netstandard2.0\Harmonic_Control.dll

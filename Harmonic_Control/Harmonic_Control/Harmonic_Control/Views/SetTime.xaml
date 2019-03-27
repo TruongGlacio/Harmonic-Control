@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Harmonic_Control.Views.SetTime"
+             Title="Harmonic Off Time Setting"
+            
+             >
+    <StackLayout
+            Orientation="Vertical"
+            BackgroundColor="#E0F7FA"     
+            HorizontalOptions="FillAndExpand"
+            >
+            <TemplatedView HeightRequest="220"/>
+            <StackLayout
+                Orientation="Horizontal"
+                VerticalOptions="Center"
+                >
+                <TemplatedView WidthRequest="50"/>
+                <Editor
+                     x:Name="textEdit_Time"
+                     Text="Type here"
+                     BackgroundColor="#FFFFFF"
+                     TextColor="#000000"
+                     HeightRequest="60"
+                     WidthRequest="180"
+                     HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="Center"
+                     FontSize="Large"
+                    />
+                <Label
+                     x:Name="Lable_Time_UnitTime"
+                     Text="(Hours)"
+                     TextColor="#000000"
+                     HeightRequest="60"
+                     WidthRequest="80"
+                     VerticalTextAlignment="Center"
+                     HorizontalTextAlignment="Center"
+                     HorizontalOptions="CenterAndExpand"
+                     FontSize="Medium"
+                    />
+                <TemplatedView WidthRequest="30"/>
+            </StackLayout>
+            <TemplatedView WidthRequest="50"/>
+            <StackLayout
+                Orientation="Horizontal"
+                VerticalOptions="Center"
+                Spacing="20"
+                >
+                <TemplatedView WidthRequest="50"/>
+            <Button
+                     x:Name="Button_OK"
+                     Text="OK"
+                     VerticalOptions="CenterAndExpand"
+                     BackgroundColor="#00E676"
+                     TextColor="{Binding ButtonTextColor}"
+                     HeightRequest="60"
+                     WidthRequest="100"
+                     BorderRadius="30"
+                     BorderWidth="3"
+                     BorderColor="#CFD8DC"
+                     FontSize="Large"
+                     Clicked="SetTimeByUser"/>
+            <Button     
+                     x:Name="Button_Cancel"
+                     Text="Cancel"
+                     BackgroundColor="#00E676"
+                     TextColor="{Binding ButtonTextColor}"
+                     HeightRequest="60"
+                     WidthRequest="120"
+                     BorderRadius="30"
+                     BorderColor="#CFD8DC"
+                     BorderWidth="3"
+                     FontSize="Large"
+                     VerticalOptions="CenterAndExpand"
+                     Clicked="BackToMain"/>
+                
+                
+            </StackLayout>           
+        </StackLayout>
+</ContentPage>
