@@ -13,12 +13,6 @@ namespace Harmonic_Control.Views
 {
     public partial class HarmonicControlPage : ContentPage
     {
-        List<String> itemListControlName;
-        List<String> itemListbuttonColor;
-        List<String> itemListbuttonText;
-        List<String> itemListbuttonTextColor;
-        List<String> itemListSetTimeText;
-
         Timer aTimer;
         ObservableCollection<HamonicControlItem> listControl = new ObservableCollection<HamonicControlItem>();
 
@@ -38,7 +32,7 @@ namespace Harmonic_Control.Views
         private void SetTimer()
         {
             // Create a timer with a two second interval.
-            aTimer = new Timer(20000);
+            aTimer = new Timer(2000);
             // Hook up the Elapsed event for the timer. 
             aTimer.Elapsed += OnTimedEvent;
             aTimer.AutoReset = true;
@@ -48,7 +42,7 @@ namespace Harmonic_Control.Views
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
             String itemName = listControl[0].ItemControlName;
-            controlItem.HamonicItemCheckStatus(itemName, HamonicControlItem.CHECKSTATUS_COMMAND);
+            controlItem.HamonicItemCheckStatus(itemName, ConstDefine.CHECKSTATUS_COMMAND);
             int status = GetStatusCheck();
             SetItemControl(0, status);
 
@@ -66,38 +60,25 @@ namespace Harmonic_Control.Views
         }
         private void AddItemControl()
         {
-            listControl.Add(new HamonicControlItem { ItemControlName = HamonicControlItem.ItemControlHeadName + "1", ButtonColor = HamonicControlItem.Button_Color_Disconnect, ButtonText = HamonicControlItem.Button_No_Connect, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON, ButtonSetTimeText=HamonicControlItem.Button_Set_Time_Text});
-            listControl.Add(new HamonicControlItem { ItemControlName = HamonicControlItem.ItemControlHeadName + "2", ButtonColor = HamonicControlItem.Button_Color_Disconnect, ButtonText = HamonicControlItem.Button_No_Connect, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON, ButtonSetTimeText = HamonicControlItem.Button_Set_Time_Text });
-            listControl.Add(new HamonicControlItem { ItemControlName = HamonicControlItem.ItemControlHeadName + "3", ButtonColor = HamonicControlItem.Button_Color_Disconnect, ButtonText = HamonicControlItem.Button_No_Connect, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON, ButtonSetTimeText = HamonicControlItem.Button_Set_Time_Text });
-            listControl.Add(new HamonicControlItem { ItemControlName = HamonicControlItem.ItemControlHeadName + "4", ButtonColor = HamonicControlItem.Button_Color_Disconnect, ButtonText = HamonicControlItem.Button_No_Connect, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON, ButtonSetTimeText = HamonicControlItem.Button_Set_Time_Text });
-            listControl.Add(new HamonicControlItem { ItemControlName = HamonicControlItem.ItemControlHeadName + "5", ButtonColor = HamonicControlItem.Button_Color_Disconnect, ButtonText = HamonicControlItem.Button_No_Connect, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON, ButtonSetTimeText = HamonicControlItem.Button_Set_Time_Text });
-            listControl.Add(new HamonicControlItem { ItemControlName = HamonicControlItem.ItemControlHeadName + "6", ButtonColor = HamonicControlItem.Button_Color_Disconnect, ButtonText = HamonicControlItem.Button_No_Connect, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON, ButtonSetTimeText = HamonicControlItem.Button_Set_Time_Text });
-            listControl.Add(new HamonicControlItem { ItemControlName = HamonicControlItem.ItemControlHeadName + "7", ButtonColor = HamonicControlItem.Button_Color_Disconnect, ButtonText = HamonicControlItem.Button_No_Connect, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON, ButtonSetTimeText = HamonicControlItem.Button_Set_Time_Text });
-            listControl.Add(new HamonicControlItem { ItemControlName = HamonicControlItem.ItemControlHeadName + "8", ButtonColor = HamonicControlItem.Button_Color_Disconnect, ButtonText = HamonicControlItem.Button_No_Connect, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON, ButtonSetTimeText = HamonicControlItem.Button_Set_Time_Text });
-            listControl.Add(new HamonicControlItem { ItemControlName = HamonicControlItem.ItemControlHeadName + "9", ButtonColor = HamonicControlItem.Button_Color_Disconnect, ButtonText = HamonicControlItem.Button_No_Connect, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON, ButtonSetTimeText = HamonicControlItem.Button_Set_Time_Text });
-            listControl.Add(new HamonicControlItem { ItemControlName = HamonicControlItem.ItemControlHeadName + "10", ButtonColor = HamonicControlItem.Button_Color_Disconnect, ButtonText = HamonicControlItem.Button_No_Connect, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON, ButtonSetTimeText = HamonicControlItem.Button_Set_Time_Text });
-            listControl.Add(new HamonicControlItem { ItemControlName = HamonicControlItem.ItemControlHeadName + "11", ButtonColor = HamonicControlItem.Button_Color_Disconnect, ButtonText = HamonicControlItem.Button_No_Connect, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON, ButtonSetTimeText = HamonicControlItem.Button_Set_Time_Text });
-            listControl.Add(new HamonicControlItem { ItemControlName = HamonicControlItem.ItemControlHeadName + "12", ButtonColor = HamonicControlItem.Button_Color_Disconnect, ButtonText = HamonicControlItem.Button_No_Connect, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON, ButtonSetTimeText = HamonicControlItem.Button_Set_Time_Text });
-            listControl.Add(new HamonicControlItem { ItemControlName = HamonicControlItem.ItemControlHeadName + "13", ButtonColor = HamonicControlItem.Button_Color_Disconnect, ButtonText = HamonicControlItem.Button_No_Connect, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON, ButtonSetTimeText = HamonicControlItem.Button_Set_Time_Text });
-            listControl.Add(new HamonicControlItem { ItemControlName = HamonicControlItem.ItemControlHeadName + "14", ButtonColor = HamonicControlItem.Button_Color_Disconnect, ButtonText = HamonicControlItem.Button_No_Connect, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON, ButtonSetTimeText = HamonicControlItem.Button_Set_Time_Text });
-            listControl.Add(new HamonicControlItem { ItemControlName = HamonicControlItem.ItemControlHeadName + "15", ButtonColor = HamonicControlItem.Button_Color_Disconnect, ButtonText = HamonicControlItem.Button_No_Connect, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON, ButtonSetTimeText = HamonicControlItem.Button_Set_Time_Text });
-            listControl.Add(new HamonicControlItem { ItemControlName = HamonicControlItem.ItemControlHeadName + "16", ButtonColor = HamonicControlItem.Button_Color_Disconnect, ButtonText = HamonicControlItem.Button_No_Connect, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON, ButtonSetTimeText = HamonicControlItem.Button_Set_Time_Text });
-
+            for(int i = 1; i < ConstDefine.ITEMCONTROL_LIST.Count; i++)
+            {
+                listControl.Add(new HamonicControlItem { ItemControlName = ConstDefine.ITEMCONTROL_LIST[i], ButtonColor = ConstDefine.Button_Color_Disconnect, ButtonText = ConstDefine.Button_No_Connect, ButtonTextColor = ConstDefine.Button_Text_Color_ON, ButtonSetTimeText = ConstDefine.Button_Set_Time_Text });
+            }
         }
         private void SetItemControl(int index, int status) {
             switch (status) {
-                case HamonicControlItem.HARMONIC_NOT_CONNNECT:
-                    listControl[index] = new HamonicControlItem { ItemControlName = HamonicControlItem.ItemControlHeadName + (1+index).ToString(), ButtonColor = HamonicControlItem.Button_Color_Disconnect, ButtonText = HamonicControlItem.Button_No_Connect, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON, ButtonSetTimeText = HamonicControlItem.Button_Set_Time_Text };
+                case ConstDefine.HARMONIC_NOT_CONNNECT:
+                    listControl[index] = new HamonicControlItem { ItemControlName = ConstDefine.ITEMCONTROL_LIST[index+1], ButtonColor = ConstDefine.Button_Color_Disconnect, ButtonText = ConstDefine.Button_No_Connect, ButtonTextColor = ConstDefine.Button_Text_Color_ON, ButtonSetTimeText = ConstDefine.Button_Set_Time_Text };
                     break;
-                case HamonicControlItem.HARMONIC_ON:
-                    listControl[index] = new HamonicControlItem { ItemControlName = HamonicControlItem.ItemControlHeadName + (1 + index).ToString(), ButtonColor = HamonicControlItem.Button_Color_On, ButtonText = HamonicControlItem.Button_On, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON, ButtonSetTimeText = HamonicControlItem.Button_Set_Time_Text };
+                case ConstDefine.HARMONIC_ON:
+                    listControl[index] = new HamonicControlItem { ItemControlName = ConstDefine.ITEMCONTROL_LIST[index+1], ButtonColor = ConstDefine.Button_Color_On, ButtonText = ConstDefine.Button_On, ButtonTextColor = ConstDefine.Button_Text_Color_ON, ButtonSetTimeText = ConstDefine.Button_Set_Time_Text };
 
                     break;
-                case HamonicControlItem.HARMONIC_OFF:
-                    listControl[index] = new HamonicControlItem { ItemControlName = HamonicControlItem.ItemControlHeadName + (1 + index).ToString(), ButtonColor = HamonicControlItem.Button_Color_Off, ButtonText = HamonicControlItem.Button_Color_Off, ButtonTextColor = HamonicControlItem.Button_Text_Color_OFF, ButtonSetTimeText = HamonicControlItem.Button_Set_Time_Text };
+                case ConstDefine.HARMONIC_OFF:
+                    listControl[index] = new HamonicControlItem { ItemControlName = ConstDefine.ITEMCONTROL_LIST[index+1], ButtonColor = ConstDefine.Button_Color_Off, ButtonText = ConstDefine.Button_Off, ButtonTextColor = ConstDefine.Button_Text_Color_OFF, ButtonSetTimeText = ConstDefine.Button_Set_Time_Text };
                     break;
                 default:
-                    listControl[index] = new HamonicControlItem { ItemControlName = HamonicControlItem.ItemControlHeadName + (1 + index).ToString(), ButtonColor = HamonicControlItem.Button_Color_Disconnect, ButtonText = HamonicControlItem.Button_No_Connect, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON, ButtonSetTimeText = HamonicControlItem.Button_Set_Time_Text };
+                    listControl[index] = new HamonicControlItem { ItemControlName = ConstDefine.ITEMCONTROL_LIST[index+1], ButtonColor = ConstDefine.Button_Color_Disconnect, ButtonText = ConstDefine.Button_No_Connect, ButtonTextColor = ConstDefine.Button_Text_Color_ON, ButtonSetTimeText = ConstDefine.Button_Set_Time_Text };
                     break;
           }
         }
@@ -131,22 +112,22 @@ namespace Harmonic_Control.Views
         public void OnButton_CheckConnectAll()
         {  
             //ImageButton button = (ImageButton)sender;
-            // for (int i=0;i<= listControl.Count; i ++)
+             for (int i=1;i<= ConstDefine.ITEMCONTROL_LIST.Count-1; i ++)
             {
-                String itemName = listControl[0].ItemControlName;
-                int resultCheckStatus = controlItem.HamonicItemCheckStatus(itemName, HamonicControlItem.CHECKSTATUS_COMMAND);
+                String itemName = listControl[i-1].ItemControlName;
+                int resultCheckStatus = controlItem.HamonicItemCheckStatus(itemName, ConstDefine.CHECKSTATUS_COMMAND);
                 switch (resultCheckStatus) {
-                    case HamonicControlItem.HARMONIC_NOT_CONNNECT:
-                        listControl[0] = new HamonicControlItem { ItemControlName= HamonicControlItem.ItemControlHeadName+"1", ButtonColor = HamonicControlItem.Button_Color_Disconnect, ButtonText = HamonicControlItem.Button_No_Connect, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON,ButtonSetTimeText=HamonicControlItem.Button_Set_Time_Text };
+                    case ConstDefine.HARMONIC_NOT_CONNNECT:
+                        listControl[i-1] = new HamonicControlItem { ItemControlName= ConstDefine.ITEMCONTROL_LIST[i], ButtonColor = ConstDefine.Button_Color_Disconnect, ButtonText = ConstDefine.Button_No_Connect, ButtonTextColor = ConstDefine.Button_Text_Color_ON,ButtonSetTimeText= ConstDefine.Button_Set_Time_Text };
                         break;
-                    case HamonicControlItem.HARMONIC_OFF:
-                        listControl[0] = new HamonicControlItem { ItemControlName = HamonicControlItem.ItemControlHeadName +"1", ButtonColor = HamonicControlItem.Button_Color_Off, ButtonText = HamonicControlItem.Button_Off, ButtonTextColor = HamonicControlItem.Button_Text_Color_OFF, ButtonSetTimeText = HamonicControlItem.Button_Set_Time_Text };
+                    case ConstDefine.HARMONIC_OFF:
+                        listControl[i-1] = new HamonicControlItem { ItemControlName = ConstDefine.ITEMCONTROL_LIST[i], ButtonColor = ConstDefine.Button_Color_Off, ButtonText = ConstDefine.Button_Off, ButtonTextColor = ConstDefine.Button_Text_Color_OFF, ButtonSetTimeText = ConstDefine.Button_Set_Time_Text };
                         break;
-                    case HamonicControlItem.HARMONIC_ON:
-                        listControl[0] = new HamonicControlItem { ItemControlName = HamonicControlItem.ItemControlHeadName + "1", ButtonColor = HamonicControlItem.Button_Color_On, ButtonText = HamonicControlItem.Button_On, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON, ButtonSetTimeText = HamonicControlItem.Button_Set_Time_Text };
+                    case ConstDefine.HARMONIC_ON:
+                        listControl[i-1] = new HamonicControlItem { ItemControlName = ConstDefine.ITEMCONTROL_LIST[i], ButtonColor = ConstDefine.Button_Color_On, ButtonText = ConstDefine.Button_On, ButtonTextColor = ConstDefine.Button_Text_Color_ON, ButtonSetTimeText = ConstDefine.Button_Set_Time_Text };
                         break;
                     default:
-                        listControl[0] = new HamonicControlItem { ItemControlName = HamonicControlItem.ItemControlHeadName + "1", ButtonColor = HamonicControlItem.Button_Color_Disconnect, ButtonText = HamonicControlItem.Button_No_Connect, ButtonTextColor = HamonicControlItem.Button_Text_Color_ON, ButtonSetTimeText = HamonicControlItem.Button_Set_Time_Text };
+                        listControl[i-1] = new HamonicControlItem { ItemControlName = ConstDefine.ITEMCONTROL_LIST[i], ButtonColor = ConstDefine.Button_Color_Disconnect, ButtonText = ConstDefine.Button_No_Connect, ButtonTextColor = ConstDefine.Button_Text_Color_ON, ButtonSetTimeText = ConstDefine.Button_Set_Time_Text };
                         break;
                 }       
             }
@@ -159,53 +140,53 @@ namespace Harmonic_Control.Views
         {
             StackLayout stackLayoutParent = (StackLayout)button.Parent;
             Button buttonTime = (Button)stackLayoutParent.Children[3];
-            if (button.Text == HamonicControlItem.Button_On)
+            if (button.Text == ConstDefine.Button_On)
             {
 
-                int resultControl = controlItem.HamonicItemSetting(ItemChoose(button),HamonicControlItem.OFF_COMMAND);
+                int resultControl = controlItem.HamonicItemSetting(ItemChoose(button), ConstDefine.OFF_COMMAND);
 
-                if (resultControl==HamonicControlItem.HARMONIC_ON)
-                {
-                    button.Text = HamonicControlItem.Button_On;
-                    button.BackgroundColor = Color.FromHex(HamonicControlItem.Button_Color_On);
-                    buttonTime.BackgroundColor= Color.FromHex(HamonicControlItem.Button_Color_On);
-                }
-                else if (resultControl == HamonicControlItem.HARMONIC_OFF)
-                {
-                    button.Text = HamonicControlItem.Button_Off;
-                    button.BackgroundColor = Color.FromHex(HamonicControlItem.Button_Color_Off);
-                    buttonTime.BackgroundColor = Color.FromHex(HamonicControlItem.Button_Color_Off);
+                //if (resultControl== ConstDefine.HARMONIC_ON)
+                //{
+                //    button.Text = ConstDefine.Button_On;
+                //    button.BackgroundColor = Color.FromHex(ConstDefine.Button_Color_On);
+                //    buttonTime.BackgroundColor= Color.FromHex(ConstDefine.Button_Color_On);
+                //}
+                //else if (resultControl == ConstDefine.HARMONIC_OFF)
+                //{
+                //    button.Text = ConstDefine.Button_Off;
+                //    button.BackgroundColor = Color.FromHex(ConstDefine.Button_Color_Off);
+                //    buttonTime.BackgroundColor = Color.FromHex(ConstDefine.Button_Color_Off);
 
-                }
-                else
-                {
-                    button.Text = HamonicControlItem.Button_No_Connect;
-                    button.BackgroundColor = Color.FromHex(HamonicControlItem.Button_Color_Disconnect);
-                    buttonTime.BackgroundColor = Color.FromHex(HamonicControlItem.Button_Color_Disconnect);
-                }
+                //}
+                //else
+                //{
+                //    button.Text = ConstDefine.Button_No_Connect;
+                //    button.BackgroundColor = Color.FromHex(ConstDefine.Button_Color_Disconnect);
+                //    buttonTime.BackgroundColor = Color.FromHex(ConstDefine.Button_Color_Disconnect);
+                //}
 
             }
             else
             {              
-                int resultControl = controlItem.HamonicItemSetting(ItemChoose(button), HamonicControlItem.ON_COMMAND);
-                if (resultControl == HamonicControlItem.HARMONIC_ON)
-                {
-                    button.Text = HamonicControlItem.Button_On;
-                    button.BackgroundColor = Color.FromHex(HamonicControlItem.Button_Color_On);
-                    buttonTime.BackgroundColor = Color.FromHex(HamonicControlItem.Button_Color_On);
+                int resultControl = controlItem.HamonicItemSetting(ItemChoose(button), ConstDefine.ON_COMMAND);
+                //if (resultControl == ConstDefine.HARMONIC_ON)
+                //{
+                //    button.Text = ConstDefine.Button_On;
+                //    button.BackgroundColor = Color.FromHex(ConstDefine.Button_Color_On);
+                //    buttonTime.BackgroundColor = Color.FromHex(ConstDefine.Button_Color_On);
 
-                }
-                else if (resultControl == HamonicControlItem.HARMONIC_OFF)
-                {
-                    button.Text = HamonicControlItem.Button_Off;
-                    button.BackgroundColor = Color.FromHex(HamonicControlItem.Button_Color_Off);
-                    buttonTime.BackgroundColor = Color.FromHex(HamonicControlItem.Button_Color_Off);
-                }
-                else {
-                    button.Text = HamonicControlItem.Button_No_Connect;
-                    button.BackgroundColor = Color.FromHex(HamonicControlItem.Button_Color_Disconnect);
-                    buttonTime.BackgroundColor = Color.FromHex(HamonicControlItem.Button_Color_Disconnect);
-                }
+                //}
+                //else if (resultControl == ConstDefine.HARMONIC_OFF)
+                //{
+                //    button.Text = ConstDefine.Button_Off;
+                //    button.BackgroundColor = Color.FromHex(ConstDefine.Button_Color_Off);
+                //    buttonTime.BackgroundColor = Color.FromHex(ConstDefine.Button_Color_Off);
+                //}
+                //else {
+                //    button.Text = ConstDefine.Button_No_Connect;
+                //    button.BackgroundColor = Color.FromHex(ConstDefine.Button_Color_Disconnect);
+                //    buttonTime.BackgroundColor = Color.FromHex(ConstDefine.Button_Color_Disconnect);
+                //}
 
             }
         }

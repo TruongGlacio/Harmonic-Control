@@ -45,9 +45,9 @@ namespace Harmonic_Control.Views
                 {
                     HamonicSetTime hamonicSetTime = new HamonicSetTime();
                     int result= hamonicSetTime.SetTime(this.GetItemName(),hours);
-                    if (result == HamonicControlItem.HARMONIC_SET_TIME_TRUE)
+                    if (result == ConstDefine.HARMONIC_SET_TIME_TRUE)
                     {
-                        button.BackgroundColor = Color.FromHex(HamonicControlItem.Button_Color_On);
+                        button.BackgroundColor = Color.FromHex(ConstDefine.Button_Color_On);
                         //MainPage RootPage = new MainPage();
                         //Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
                         //MenuPages.Add(id, new NavigationPage(harmonicControlPage));
@@ -55,14 +55,14 @@ namespace Harmonic_Control.Views
                     }
                     else
                     {
-                        button.BackgroundColor = Color.FromHex( HamonicControlItem.Button_Color_Off);  
+                        button.BackgroundColor = Color.FromHex(ConstDefine.Button_Color_Off);  
                     }
 
                 }
             }
             else
             {
-                button.BackgroundColor = Color.FromHex(HamonicControlItem.Button_Color_Off);
+                button.BackgroundColor = Color.FromHex(ConstDefine.Button_Color_Off);
                 Console.WriteLine("Type value not number");
             }
 

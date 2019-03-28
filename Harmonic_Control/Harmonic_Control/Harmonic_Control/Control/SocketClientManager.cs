@@ -12,39 +12,35 @@ namespace Harmonic_Control
 {
     public delegate int CheckStatusResult(string hot, int port, int COMMAND, string itemNameControl);
     public delegate int SendTimeSettingResult(string hot, int port, double hours, string itemNameControl);
- 
+
     class SocketClientManager
     {
-        private int result=2;
+        public static int result = 2;
 
         public int CheckHamonic_Status(string host, int port, int COMMAND, string itemNameControl)
         {
             var resultVar = 2;
-            CheckStatusResult checkStatusResult = new CheckStatusResult(HamonicCheckStatus);//  this.HamonicCheckStatus;
-            IAsyncResult asyncResult = checkStatusResult.BeginInvoke(host, port, COMMAND, itemNameControl, null, null);
-            resultVar =( checkStatusResult.EndInvoke(asyncResult));
-            SetStatusCheck(resultVar);
-            return resultVar; 
-        }
-
-
-        private async Task<int> WrapSomeMethod(string host, int port, int COMMAND, string itemNameControl) {
-            var resultVar = 2;
-            return await Task.Run(() =>
+            //CheckStatusResult checkStatusResult = new CheckStatusResult(HamonicCheckStatus);//  this.HamonicCheckStatus;
+            //IAsyncResult asyncResult = checkStatusResult.BeginInvoke(host, port, COMMAND, itemNameControl, null, null);
+            //resultVar =( checkStatusResult.EndInvoke(asyncResult));
+            //SetStatusCheck(resultVar);
+            Task.Factory.StartNew(() =>
             {
-                //CheckStatusResult checkStatusResult = new CheckStatusResult(HamonicCheckStatus);//  this.HamonicCheckStatus;
-                //IAsyncResult asyncResult = checkStatusResult.BeginInvoke(host, port, COMMAND, itemNameControl, null, null);
-                //resultVar = checkStatusResult.EndInvoke(asyncResult);
-                resultVar =HamonicCheckStatus(host, port, COMMAND, itemNameControl);
-                return resultVar;
+                resultVar = HamonicCheckStatus(host, port, COMMAND, itemNameControl);
+                SetStatusCheck(resultVar);
+                return;
             });
+
+            return resultVar;
         }
 
-        public int GetStatusCheck() {
-            return this.result;
+        public static int GetStatusCheck()
+        {
+            return result;
         }
-        public void SetStatusCheck(int status) {
-            this.result = status;
+        public void SetStatusCheck(int status)
+        {
+            result = status;
         }
         public int SetTimeCommand(string host, int port, double hours, string itemNameControl)
         {
@@ -53,31 +49,6 @@ namespace Harmonic_Control
             var resultVar = checkStatusResult.EndInvoke(asyncResult);
             return (int)resultVar;
         }
-        private bool Connect(string host, int port, int COMMAND, string itemNameControl)
-        {
-            NetworkInterface.GetAllNetworkInterfaces();
-            IPAddress[] IPs = Dns.GetHostAddresses(host);
-           
-                try
-                {
-
-                    TcpClient tcpClient = new TcpClient(host, port);
-                    Socket socket = tcpClient.Client;
-                    SendData(socket, COMMAND, itemNameControl);
-                    Thread.Sleep(500);
-                    socket.Disconnect(true);
-                    DisConnect(tcpClient);
-                    return true;
-
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Error connect to socket server:" + e.Message);
-                    return false;
-                }   
-
-        }
-
         private int HamonicCheckStatus(string host, int port, int COMMAND, string itemNameControl)
         {
             try
@@ -98,20 +69,21 @@ namespace Harmonic_Control
                 DisConnect(tcpClient);
                 tcpClient.Close();
                 int status = GetStatusFromDataRecive(dataString, itemNameControl);
-                if (status == HamonicControlItem.HARMONIC_OFF)
-                    return HamonicControlItem.HARMONIC_OFF;
-                else if (status == HamonicControlItem.HARMONIC_ON)
-                    return HamonicControlItem.HARMONIC_ON;
+                if (status == ConstDefine.HARMONIC_OFF)
+                    return ConstDefine.HARMONIC_OFF;
+                else if (status == ConstDefine.HARMONIC_ON)
+                    return ConstDefine.HARMONIC_ON;
                 else
-                    return HamonicControlItem.HARMONIC_NOT_CONNNECT;
+                    return ConstDefine.HARMONIC_NOT_CONNNECT;
             }
             catch (Exception e)
             {
                 Console.WriteLine("Error connect to socket server:" + e.Message);
-                return HamonicControlItem.HARMONIC_NOT_CONNNECT;
+                return ConstDefine.HARMONIC_NOT_CONNNECT;
             }
         }
-        private int CheckStatusSetTime(string host, int port, double hours, string itemNameControl) {
+        private int CheckStatusSetTime(string host, int port, double hours, string itemNameControl)
+        {
             try
             {
                 TcpClient tcpClient = new TcpClient(host, port);
@@ -130,30 +102,31 @@ namespace Harmonic_Control
                 DisConnect(tcpClient);
                 tcpClient.Close();
                 int status = GetStatusFromDataReciveForSetTime(dataString, itemNameControl);
-                if (status == HamonicControlItem.HARMONIC_SET_TIME_FALSE)
-                    return HamonicControlItem.HARMONIC_SET_TIME_FALSE;
-                else if (status == HamonicControlItem.HARMONIC_SET_TIME_TRUE)
-                    return HamonicControlItem.HARMONIC_SET_TIME_TRUE;
+                if (status == ConstDefine.HARMONIC_SET_TIME_FALSE)
+                    return ConstDefine.HARMONIC_SET_TIME_FALSE;
+                else if (status == ConstDefine.HARMONIC_SET_TIME_TRUE)
+                    return ConstDefine.HARMONIC_SET_TIME_TRUE;
                 else
-                    return HamonicControlItem.HARMONIC_NOT_CONNNECT;
+                    return ConstDefine.HARMONIC_NOT_CONNNECT;
             }
             catch (Exception e)
             {
                 Console.WriteLine("Error connect to socket server:" + e.Message);
-                return HamonicControlItem.HARMONIC_NOT_CONNNECT;
+                return ConstDefine.HARMONIC_NOT_CONNNECT;
             }
         }
-        private void DisConnect(TcpClient tcpClient) {
+        private void DisConnect(TcpClient tcpClient)
+        {
             if (tcpClient.Connected)
             {
                 tcpClient.Close();
-              //  tcpClient.Dispose();
+                //  tcpClient.Dispose();
 
             }
         }
-        private void SendData(Socket s, int COMMAND, string itemNameControl )
-        {   
-            String dataString = itemNameControl+":"+COMMAND;
+        private void SendData(Socket s, int COMMAND, string itemNameControl)
+        {
+            String dataString = itemNameControl + ":" + COMMAND;
 
             byte[] bytes = Encoding.ASCII.GetBytes(dataString);
             s.Send(bytes);
@@ -166,12 +139,12 @@ namespace Harmonic_Control
             s.Send(bytes);
         }
 
-        private int GetStatusFromDataRecive(string DataString,string itemNameControl)
+        private int GetStatusFromDataRecive(string DataString, string itemNameControl)
         {
 
             bool checkCorrectitem = DataString.Contains(itemNameControl);
             if (!checkCorrectitem)
-                return HamonicControlItem.HARMONIC_NOT_CONNNECT;
+                return ConstDefine.HARMONIC_NOT_CONNNECT;
             String hamonicStatus = DataString.Split(':')[1];
             Int32.TryParse(hamonicStatus, out int status);
             return status;
@@ -181,7 +154,7 @@ namespace Harmonic_Control
 
             bool checkCorrectitem = DataString.Contains(itemNameControl);
             if (!checkCorrectitem)
-                return HamonicControlItem.HARMONIC_NOT_CONNNECT;
+                return ConstDefine.HARMONIC_NOT_CONNNECT;
             String hamonicStatus = DataString.Split(',')[1];
             Int32.TryParse(hamonicStatus, out int status);
             return status;

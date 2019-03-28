@@ -35,7 +35,6 @@ namespace Harmonic_Control.Views
                         break;
                     case (int)MenuItemType.SetTime:
                         MenuPages.Add(id, new NavigationPage(harmonicControlPage));
-                        harmonicControlPage.OnButton_CheckConnectAll();
                         //MenuPages.Add(id, new NavigationPage(new HarmonicControlPage()));
                         break;
                     case (int)MenuItemType.About:
