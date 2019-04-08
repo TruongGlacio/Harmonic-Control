@@ -9,38 +9,150 @@
             Orientation="Vertical"
             BackgroundColor="#E0F7FA"     
             HorizontalOptions="FillAndExpand"
+            Spacing="20"
             >
-            <TemplatedView HeightRequest="220"/>
-            <StackLayout
+            <TemplatedView HeightRequest="20"/>
+        <StackLayout
+            Orientation="Horizontal"
+            VerticalOptions="Center"
+            HorizontalOptions="Start"
+            >
+            <TemplatedView WidthRequest="20"/>
+            <Label
+                Text="Time 1:"
+                HeightRequest="40"
+                WidthRequest="60"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="EndAndExpand"
+                FontSize="Default"
+                TextColor="#00E676"
+                />
+            <Picker
+                x:Name="picker_SetTime1"
+                BackgroundColor="#FFFFFF"
+                TextColor="#000000"
+                Title="Select time"
+                HeightRequest="40"
+                WidthRequest="150"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Start"
+                FontSize="Default"
+                />
+            <TemplatedView WidthRequest="30"/>
+        </StackLayout>
+        <StackLayout
                 Orientation="Horizontal"
                 VerticalOptions="Center"
+                HorizontalOptions="Start"
                 >
-                <TemplatedView WidthRequest="50"/>
-                <Editor
-                     x:Name="textEdit_Time"
-                     Text="Type here"
-                     BackgroundColor="#FFFFFF"
-                     TextColor="#000000"
-                     HeightRequest="60"
-                     WidthRequest="180"
-                     HorizontalOptions="CenterAndExpand"
-                     VerticalOptions="Center"
-                     FontSize="Large"
-                    />
-                <Label
-                     x:Name="Lable_Time_UnitTime"
-                     Text="(Hours)"
-                     TextColor="#000000"
-                     HeightRequest="60"
-                     WidthRequest="80"
-                     VerticalTextAlignment="Center"
-                     HorizontalTextAlignment="Center"
-                     HorizontalOptions="CenterAndExpand"
-                     FontSize="Medium"
-                    />
-                <TemplatedView WidthRequest="30"/>
-            </StackLayout>
-            <TemplatedView WidthRequest="50"/>
+            <TemplatedView WidthRequest="20"/>
+            <Label
+                Text="Time 2:"
+                HeightRequest="40"
+                WidthRequest="60"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="End"
+                FontSize="Default"
+                TextColor="#00E676"
+                />
+            <Picker
+                x:Name="picker_SetTime2"
+                BackgroundColor="#FFFFFF"
+                TextColor="#000000"
+                HeightRequest="40"
+                Title="Select time"
+                WidthRequest="150"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Center"
+                FontSize="Large"
+                />
+            <TemplatedView WidthRequest="30"/>
+        </StackLayout>
+        <StackLayout
+                Orientation="Horizontal"
+                VerticalOptions="Center"
+                HorizontalOptions="Start"
+                >
+            <TemplatedView WidthRequest="20"/>
+            <Label
+                Text="Time 3:"
+                HeightRequest="40"
+                WidthRequest="60"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="End"
+                FontSize="Default"
+                TextColor="#00E676"
+                />
+            <Picker
+                x:Name="picker_SetTime3"
+                BackgroundColor="#FFFFFF"
+                TextColor="#000000"
+                HeightRequest="40"
+                Title="Select time"
+                WidthRequest="150"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Center"
+                FontSize="Large"
+                />
+            <TemplatedView WidthRequest="30"/>
+        </StackLayout>
+        <StackLayout
+                Orientation="Horizontal"
+                VerticalOptions="Center"
+                HorizontalOptions="Start"
+                >
+            <TemplatedView WidthRequest="20"/>
+            <Label
+                Text="Time 4:"
+                HeightRequest="40"
+                WidthRequest="60"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="End"
+                FontSize="Default"
+                TextColor="#00E676"
+                />
+            <Picker
+                x:Name="picker_SetTime4"
+                BackgroundColor="#FFFFFF"
+                TextColor="#000000"
+                HeightRequest="40"
+                Title="Select time"
+                WidthRequest="150"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Center"
+                FontSize="Large"
+                />
+            <TemplatedView WidthRequest="30"/>
+        </StackLayout>
+        <StackLayout
+                Orientation="Horizontal"
+                VerticalOptions="Center"
+                HorizontalOptions="Start"
+                >
+            <TemplatedView WidthRequest="20"/>
+            <Label
+                Text="Time 5:"
+                HeightRequest="40"
+                WidthRequest="60"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="End"
+                FontSize="Default"
+                TextColor="#00E676"
+                />
+            <Picker
+                x:Name="picker_SetTime5"
+                BackgroundColor="#FFFFFF"
+                TextColor="#000000"
+                HeightRequest="40"
+                Title="Select time"
+                WidthRequest="150"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Center"
+                FontSize="Large"
+                />
+            <TemplatedView WidthRequest="30"/>
+        </StackLayout>
+ <TemplatedView WidthRequest="50"/>
             <StackLayout
                 Orientation="Horizontal"
                 VerticalOptions="Center"

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Harmonic_Control
 {
     public delegate int CheckStatusResult(string hot, int port, int COMMAND, string itemNameControl);
-    public delegate int SendTimeSettingResult(string hot, int port, double hours, string itemNameControl);
+    public delegate int SendTimeSettingResult(string hot, int port, string hours, string itemNameControl);
 
     class SocketClientManager
     {
@@ -42,7 +42,7 @@ namespace Harmonic_Control
         {
             result = status;
         }
-        public int SetTimeCommand(string host, int port, double hours, string itemNameControl)
+        public int SetTimeCommand(string host, int port, string hours, string itemNameControl)
         {
             SendTimeSettingResult checkStatusResult = this.CheckStatusSetTime;
             IAsyncResult asyncResult = checkStatusResult.BeginInvoke(host, port, hours, itemNameControl, null, null);
@@ -82,7 +82,7 @@ namespace Harmonic_Control
                 return ConstDefine.HARMONIC_NOT_CONNNECT;
             }
         }
-        private int CheckStatusSetTime(string host, int port, double hours, string itemNameControl)
+        private int CheckStatusSetTime(string host, int port, string hours, string itemNameControl)
         {
             try
             {
@@ -131,7 +131,7 @@ namespace Harmonic_Control
             byte[] bytes = Encoding.ASCII.GetBytes(dataString);
             s.Send(bytes);
         }
-        private void SendTimeData(Socket s, double hours, string itemNameControl)
+        private void SendTimeData(Socket s, string hours, string itemNameControl)
         {
             String dataString = itemNameControl + "," + hours;
 

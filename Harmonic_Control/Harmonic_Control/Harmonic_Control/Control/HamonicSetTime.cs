@@ -8,7 +8,7 @@ namespace Harmonic_Control
     {
         public HamonicSetTime() { }
 
-        public int SetTime(string itemName, double hours)
+        public int SetTime(string itemName, string hours)
         {
             int result = 2;
             SocketClientManager socketClientManager = new SocketClientManager();
